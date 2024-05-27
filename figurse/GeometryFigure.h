@@ -111,18 +111,18 @@ public:
 //Определения
 template<class T>
 T Triangle<T>::calc_area() {
-    T a = sqrt(pow(vertices[1].x - vertices[0].x, 2) + pow(vertices[1].y - vertices[0].y, 2));
-    T b = sqrt(pow(vertices[2].x - vertices[1].x, 2) + pow(vertices[2].y - vertices[1].y, 2));
-    T c = sqrt(pow(vertices[0].x - vertices[2].x, 2) + pow(vertices[0].y - vertices[2].y, 2));
+    T a = sqrt((vertices[1].x - vertices[0].x)*(vertices[1].x - vertices[0].x) + (vertices[1].y - vertices[0].y)) *(vertices[1].y - vertices[0].y));
+    T b = sqrt((vertices[2].x - vertices[1].x) *(vertices[2].x - vertices[1].x) + (vertices[2].y - vertices[1].y)* (vertices[2].y - vertices[1].y));
+    T c = sqrt((vertices[0].x - vertices[2].x)*(vertices[0].x - vertices[2].x) + (vertices[0].y - vertices[2].y)*(vertices[0].y - vertices[2].y));
     T s = (a + b + c) / 2;
     return sqrt(s * (s - a) * (s - b) * (s - c));
 }
 
 template<class T>
 T Triangle<T>::calc_perimeter() {
-    T a = sqrt(pow(vertices[1].x - vertices[0].x, 2) + pow(vertices[1].y - vertices[0].y, 2));
-    T b = sqrt(pow(vertices[2].x - vertices[1].x, 2) + pow(vertices[2].y - vertices[1].y, 2));
-    T c = sqrt(pow(vertices[0].x - vertices[2].x, 2) + pow(vertices[0].y - vertices[2].y, 2));
+    T a = sqrt((vertices[1].x - vertices[0].x) * (vertices[1].x - vertices[0].x) + (vertices[1].y - vertices[0].y) * (vertices[1].y - vertices[0].y));
+    T b = sqrt((vertices[2].x - vertices[1].x) * (vertices[2].x - vertices[1].x) + (vertices[2].y - vertices[1].y) * (vertices[2].y - vertices[1].y));
+    T c = sqrt((vertices[0].x - vertices[2].x) * (vertices[0].x - vertices[2].x) + (vertices[0].y - vertices[2].y) * (vertices[0].y - vertices[2].y));
     return a + b + c;
 }
 
@@ -151,15 +151,15 @@ public:
 //Определения
 template<class T>
 T Rectangle<T>::calc_area() {
-    T width = sqrt(pow(vertices[1].x - vertices[0].x, 2) + pow(vertices[1].y - vertices[0].y, 2));
-    T height = sqrt(pow(vertices[2].x - vertices[1].x, 2) + pow(vertices[2].y - vertices[1].y, 2));
+    T width = sqrt((vertices[1].x - vertices[0].x) * (vertices[1].x - vertices[0].x) + (vertices[1].y - vertices[0].y) * (vertices[1].y - vertices[0].y));
+    T height = sqrt((vertices[2].x - vertices[1].x) * (vertices[2].x - vertices[1].x) + (vertices[2].y - vertices[1].y) * (vertices[2].y - vertices[1].y));
     return width * height;
 }
 
 template<class T>
 T Rectangle<T>::calc_perimeter() {
-    T width = sqrt(pow(vertices[1].x - vertices[0].x, 2) + pow(vertices[1].y - vertices[0].y, 2));
-    T height = sqrt(pow(vertices[2].x - vertices[1].x, 2) + pow(vertices[2].y - vertices[1].y, 2));
+    T width = sqrt((vertices[1].x - vertices[0].x) * (vertices[1].x - vertices[0].x) + (vertices[1].y - vertices[0].y) * (vertices[1].y - vertices[0].y));
+    T height = sqrt((vertices[2].x - vertices[1].x) * (vertices[2].x - vertices[1].x) + (vertices[2].y - vertices[1].y) * (vertices[2].y - vertices[1].y));
     return 2 * (width + height);
 }
 
@@ -219,7 +219,7 @@ T Polygon<T>::calc_perimeter() {
     T perimeter = 0.0;
     int n = vertices.size();
     for (int i = 0; i < n; ++i) {
-        perimeter += sqrt(pow(vertices[(i + 1) % n].x - vertices[i].x, 2) + pow(vertices[(i + 1) % n].y - vertices[i].y, 2));
+        perimeter += sqrt((vertices[(i + 1) % n].x - vertices[i].x) * (vertices[(i + 1) % n].x - vertices[i].x) + (vertices[(i + 1) % n].y - vertices[i].y) * (vertices[(i + 1) % n].y - vertices[i].y));
     }
     return perimeter;
 }

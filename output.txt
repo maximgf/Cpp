@@ -1,0 +1,19 @@
+Circle
+Area: 78.5398
+Perimeter: 31.4159
+
+Ellipse
+Area: 18.8496
+Perimeter: 15.8654
+
+Triangle
+Area: 6
+Perimeter: 12
+
+Rectangle
+Area: 12
+Perimeter: 14
+
+Polygon
+Area: 1.71976e+06
+Perimeter: 18970.2

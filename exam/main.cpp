@@ -2,12 +2,10 @@
 //
 
 #include "Game.h"
-#include "ComputerPlayer.h"
 
 int main() {
     Game game;
     game.play();
-    // Определение двумерного массива
 
 }
 

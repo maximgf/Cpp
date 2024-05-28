@@ -1,5 +1,5 @@
 #include "ComputerPlayer.h"
-#include <algorithm>
+
 
 ComputerPlayer::ComputerPlayer()
 {

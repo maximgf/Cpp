@@ -1,7 +1,8 @@
+#pragma once
 #include "Cell.h"
 
 
-Cell::Cell() 
+Cell::Cell()
 {
     value = ' ';
 }

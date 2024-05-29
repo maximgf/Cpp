@@ -1,0 +1,9 @@
+﻿  Board.cpp
+C:\Users\maxim\source\repos\qrest\qrest\Board.cpp(38,9): warning C4101: k: неиспользованная локальная переменная
+C:\Users\maxim\source\repos\qrest\qrest\Board.cpp(151,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  ComputerPlayer.cpp
+  Game.cpp
+C:\Users\maxim\source\repos\qrest\qrest\Game.cpp(64,27): warning C4018: <: несоответствие типов со знаком и без знака
+  qrest.cpp
+  Создание кода...
+  qrest.vcxproj -> C:\Users\maxim\source\repos\qrest\Debug\qrest.exe

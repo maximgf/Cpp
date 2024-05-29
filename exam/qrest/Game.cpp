@@ -1,11 +1,11 @@
-#include "Game.h"
+п»ї#include "Game.h"
 #include <fstream>
- 
+
 
 
 void Game::play() {
     char player = 'X';
-    ComputerPlayer computer;
+    ComputerPlayer computer('O');
 
     while (true) {
         if (board.isFull())
@@ -16,6 +16,7 @@ void Game::play() {
         }
         if (player == 'X') {
             int x, y;
+            std::cout <<"Hint* X: " << board.Hint(board, player, board.getLastMove()).first << " Y: " << board.Hint(board, player, board.getLastMove()).second<<std::endl;
             std::cout << "Enter your move <x y>: ";
             std::cin >> x >> y;
 
@@ -37,7 +38,7 @@ void Game::play() {
         else {
             system("cls");
             std::cout << "Computer step:\n";
-            auto move = computer.GetMove(board, player);
+            auto move = computer.GetMove(board);
             board.makeMove(move.first, move.second, player);
             history.push_back(move);
             board.display();
@@ -55,12 +56,12 @@ void Game::SaveHistory()
 {
     std::ofstream file;
 
-    // Открываем файл в режиме дозаписи, если файл не существует, он будет создан
+ 
     file.open("history.txt", std::ios::app);
 
     if (file.is_open()) {
         file << "GAME" << std::endl;
-        for (int i = 0; i < history.size();i++) 
+        for (int i = 0; i < history.size(); i++)
         {
             std::string play = "O: ";
             if (i % 2 == 0)
@@ -68,9 +69,9 @@ void Game::SaveHistory()
                 play = "X: ";
             }
             std::cout << play << history[i].first << " " << history[i].second << std::endl;
-            file << play << history[i].first<< " " << history[i].second << std::endl; // Записываем каждый элемент вектора в файл
+            file << play << history[i].first << " " << history[i].second << std::endl;  
         }
-        file.close(); // Закрываем файл после записи
+        file.close();  
         std::cout << "DATA is history.txt" << std::endl;
     }
     else {
@@ -79,4 +80,47 @@ void Game::SaveHistory()
 
 
 }
+
+void Game::GameDemonstration()
+{
+    ComputerPlayer computer_X('X');
+    ComputerPlayer computer_O('O');
+    char player = 'X';
+    std::pair<int,int> move;
+    while (true) 
+    {
+        if (board.isFull())
+        {
+            std::cout << "DRAW";
+            SaveHistory();
+            break;
+        }
+        if (player == 'X')
+        {
+            std::cout << "Computer_X step:\n";
+            move = computer_X.GetMove(board);
+            board.makeMove(move.first, move.second, player);
+        }
+        else
+        {
+            std::cout << "Computer_O step:\n";
+            move = computer_O.GetMove(board);
+            board.makeMove(move.first, move.second, player);
+        }
+           
+            history.push_back(move);
+            system("cls");
+            board.display();
+            if (board.Connectivity(move.first, move.second, player).first.first == 5) {
+                std::cout << "Computer " << player << " wins!" << std::endl;
+                SaveHistory();
+                break;
+            }
+            player = (player == 'X') ? 'O' : 'X';
+            //Sleep(1000);
+    }
+        
+        
+}
+
 
